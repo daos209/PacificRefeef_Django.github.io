@@ -5,6 +5,7 @@ from .models import Reservation
 from .forms import ReservationForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login
 
 # Verifica si el usuario es administrador
 def admin_check(user):
@@ -88,3 +89,18 @@ def delete_reservation(request, reservation_id):
 # Vista para la página de inicio
 def home(request):
     return render(request, 'reservaciones/home.html')
+
+# Vista para manejar el inicio de sesión
+def user_login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('home')  # Redirigir a la página de inicio después de iniciar sesión
+        else:
+            # Mostrar un mensaje de error si la autenticación falla
+            return render(request, 'reservaciones/login.html', {'error': 'Nombre de usuario o contraseña incorrectos'})
+    else:
+        return render(request, 'reservaciones/login.html')
