@@ -1,0 +1,27 @@
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Confirmar Eliminación</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ¿Estás seguro de que deseas eliminar la reserva para la habitación {{ reservation.room_number }} en el piso {{ reservation.floor }} del {{ reservation.check_in_date }} al {{ reservation.check_out_date }}? Esta acción no se puede deshacer.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <form method="POST" action="{% url 'delete_reservation' reservation.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Eliminar <i class="bi bi-trash"></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container mt-5">
+    <h1 class="mb-4">Confirmar Eliminación</h1>
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">
+      Eliminar
+    </button>
+  </div>

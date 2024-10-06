@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forma de Pago</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> <!-- Enlace a tu archivo CSS personalizado -->
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'index' %}">
+                <img src="{% static 'imagenes/logo.png' %}" alt="" class="logo"> <!-- Logo con tamaño ajustado -->
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Registrarse</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Iniciar Sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Payment Form -->
+    <div class="container mt-5">
+        <h1 class="mb-4">Forma de Pago</h1>
+        <form method="post" action="{% url 'process_payment' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="card_number" class="form-label">Número de Tarjeta</label>
+                <input type="text" class="form-control" id="card_number" name="card_number" placeholder="1234 5678 9012 3456" required>
+            </div>
+            <div class="mb-3">
+                <label for="card_name" class="form-label">Nombre en la Tarjeta</label>
+                <input type="text" class="form-control" id="card_name" name="card_name" placeholder="Nombre Completo" required>
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="expiry_date" class="form-label">Fecha de Expiración</label>
+                    <input type="text" class="form-control" id="expiry_date" name="expiry_date" placeholder="MM/AA" required>
+                </div>
+                <div class="col">
+                    <label for="cvv" class="form-label">CVV</label>
+                    <input type="text" class="form-control" id="cvv" name="cvv" placeholder="123" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Pagar</button>
+            <a href="{% url 'cancel_payment' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <div class="container">
+            <p>&copy; 2024 Pacific Reef. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva Hotelera</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css"> <!-- Enlace a tu archivo CSS personalizado -->
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <img src="Imagenes/logo.png" alt="" class="logo"> <!-- Logo con tamaño ajustado -->
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Registro.html">Registrarse</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Iniciar Sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-primary text-white text-center p-5">
+        <div class="container">
+            <h1>Reserva tu estancia en Pacific Reef</h1>
+            <p>Disfruta de un paraíso costero con las mejores comodidades.</p>
+        </div>
+    </section>
+
+    <!-- Booking Form -->
+    <section id="booking" class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Reserva tu Estancia</h2>
+            <form>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="checkin" class="form-label">Fecha de Entrada</label>
+                        <input type="date" class="form-control" id="checkin" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="checkout" class="form-label">Fecha de Salida</label>
+                        <input type="date" class="form-control" id="checkout" required>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="guests" class="form-label">Número de Huéspedes</label>
+                        <input type="number" class="form-control" id="guests" min="1" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="roomType" class="form-label">Tipo de Habitación</label>
+                        <select class="form-select" id="roomType" required>
+                            <option value="">Seleccione una opción</option>
+                            <option value="estandar">Habitación Estándar</option>
+                            <option value="deluxe">Habitación Deluxe</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="floor" class="form-label">Selecciona el Piso</label>
+                        <select class="form-select" id="floor" required>
+                            <option value="">Seleccione un Piso</option>
+                            <!-- Opciones para pisos de habitaciones estándar y deluxe -->
+                            <option value="1">Piso 1</option>
+                            <option value="2">Piso 2</option>
+                            <option value="3">Piso 3</option>
+                            <option value="4">Piso 4</option>
+                            <option value="5">Piso 5</option>
+                            <option value="6">Piso 6</option>
+                            <option value="7">Piso 7</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="roomNumber" class="form-label">Selecciona la Habitación</label>
+                        <select class="form-select" id="roomNumber" required>
+                            <option value="">Seleccione una Habitación</option>
+                            <!-- Las habitaciones serán llenadas dinámicamente con JavaScript -->
+                        </select>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Reservar Ahora</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p>&copy; 2024 Pacific Reef. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="scripts.js"></script> <!-- Enlace a tu archivo JS -->
+</body>
+</html>
