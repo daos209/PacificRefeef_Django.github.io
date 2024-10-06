@@ -80,7 +80,10 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
+# settings.py
+PAYPAL_CLIENT_ID = 'TU_CLIENT_ID'
+PAYPAL_CLIENT_SECRET = 'TU_CLIENT_SECRET'
+PAYPAL_MODE = 'sandbox'  # Cambia a 'live' en producción
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
