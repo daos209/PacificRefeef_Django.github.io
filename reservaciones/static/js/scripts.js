@@ -2,11 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const floorSelect = document.getElementById('floor');
     const roomSelect = document.getElementById('roomNumber');
     const roomTypeSelect = document.getElementById('roomType');
-    $(document).ready(function() {
-        $('.btn-danger').click(function(event) {
-            event.preventDefault(); // Prevent default form submission behavior
-        });
-    });
+    
     // Función para generar números de habitación según el tipo y piso
     function generateRoomNumbers(floor, roomType) {
         let rooms = [];
@@ -73,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
             updateFloors(roomType);
             // Resetear selección de habitación cuando se cambia el tipo de habitación
             roomSelect.innerHTML = '<option value="">Seleccione una Habitación</option>';
-        });
+        }
     });
     
     floorSelect.addEventListener('change', function() {
@@ -81,6 +77,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const roomType = roomTypeSelect.value;
         if (floor && roomType) {
             updateRooms(floor, roomType);
+        }
+    });
+
+    // Inicializar valores si están preseleccionados
+    const initialRoomType = roomTypeSelect.value;
+    const initialRoomNumber = roomSelect.value;
+    if (initialRoomType) {
+        updateFloors(initialRoomType);
+        if (initialRoomNumber) {
+            const initialFloor = parseInt(initialRoomNumber.charAt(0), 10);
+            updateRooms(initialFloor, initialRoomType);
+            floorSelect.value = initialFloor;
         }
     }
 });

@@ -1,11 +1,10 @@
-# views.py
+# reservaciones/views.py
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required, user_passes_test
 from .models import Reservation
 from .forms import ReservationForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import render, redirect
 
 # Verifica si el usuario es administrador
 def admin_check(user):
@@ -29,6 +28,9 @@ def registro(request):
 # Crear reserva (con manejo de errores)
 @login_required
 def make_reservation(request):
+    room_type = request.GET.get('roomType')
+    room_number = request.GET.get('roomNumber')
+    
     if request.method == 'POST':
         form = ReservationForm(request.POST)
         if form.is_valid():
@@ -38,10 +40,10 @@ def make_reservation(request):
             return redirect('reservation_success')
         else:
             # Manejo de errores de formulario
-            return render(request, 'reservaciones/make_reservation.html', {'form': form})
+            return render(request, 'reservaciones/make_reservation.html', {'form': form, 'room_type': room_type, 'room_number': room_number})
     else:
-        form = ReservationForm()
-    return render(request, 'reservaciones/make_reservation.html', {'form': form})
+        form = ReservationForm(initial={'room_type': room_type, 'room_number': room_number})
+    return render(request, 'reservaciones/make_reservation.html', {'form': form, 'room_type': room_type, 'room_number': room_number})
 
 # Vista de éxito de reserva (opcional: mostrar detalles)
 def reservation_success(request):

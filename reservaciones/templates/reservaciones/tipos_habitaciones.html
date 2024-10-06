@@ -1,0 +1,118 @@
+<!-- templates/reservaciones/tipos_habitaciones.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos de Habitaciones - Hotel Pacific Reef</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> <!-- Enlace a tu archivo CSS personalizado -->
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'index' %}">
+                <img src="{% static 'imagenes/logo.png' %}" alt="" class="logo"> <!-- Logo -->
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'registro' %}">Registrarse</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Iniciar Sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección de Habitaciones -->
+    <section class="container my-5">
+        <h2 class="text-center mb-5">Nuestros Tipos de Habitaciones</h2>
+
+        <!-- Habitación Estándar -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <h3>Habitación Estándar</h3>
+                <p>Una opción acogedora con todas las comodidades básicas para una estancia confortable.</p>
+                <a href="{% url 'make_reservation' %}?roomType=estandar" class="btn btn-primary">Reservar Estándar</a>
+            </div>
+            <div class="col-md-6">
+                <img src="{% static 'imagenes/habitacion_estandar.jpg' %}" alt="Habitación Estándar" class="img-fluid">
+            </div>
+        </div>
+
+        <!-- Habitación Deluxe -->
+        <h3 class="mb-4">Habitaciones Deluxe</h3>
+        <p>Habitaciones más espaciosas y elegantes, disponibles por número y con vistas impresionantes.</p>
+
+        <!-- Habitación Deluxe 601 -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <h4>Habitación Deluxe 601</h4>
+                <p>Una habitación deluxe con vistas al océano y servicios premium.</p>
+                <a href="{% url 'make_reservation' %}?roomType=deluxe&roomNumber=601" class="btn btn-primary">Reservar Deluxe 601</a>
+            </div>
+            <div class="col-md-6">
+                <img src="{% static 'imagenes/deluxe_601.jpg' %}" alt="Habitación Deluxe 601" class="img-fluid">
+            </div>
+        </div>
+
+        <!-- Habitación Deluxe 602 -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <h4>Habitación Deluxe 602</h4>
+                <p>Con vista al jardín, esta habitación deluxe es perfecta para relajarse en un ambiente natural.</p>
+                <a href="{% url 'make_reservation' %}?roomType=deluxe&roomNumber=602" class="btn btn-primary">Reservar Deluxe 602</a>
+            </div>
+            <div class="col-md-6">
+                <img src="{% static 'imagenes/deluxe_602.jpg' %}" alt="Habitación Deluxe 602" class="img-fluid">
+            </div>
+        </div>
+
+        <!-- Habitación Deluxe 603 -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <h4>Habitación Deluxe 603</h4>
+                <p>Habitación amplia con un diseño moderno y vistas panorámicas de la ciudad.</p>
+                <a href="{% url 'make_reservation' %}?roomType=deluxe&roomNumber=603" class="btn btn-primary">Reservar Deluxe 603</a>
+            </div>
+            <div class="col-md-6">
+                <img src="{% static 'imagenes/deluxe_603.jpg' %}" alt="Habitación Deluxe 603" class="img-fluid">
+            </div>
+        </div>
+
+        <!-- Habitación Deluxe 604 -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <h4>Habitación Deluxe 604</h4>
+                <p>Una de las habitaciones más exclusivas del hotel, con un espacio lujoso y elegante.</p>
+                <a href="{% url 'make_reservation' %}?roomType=deluxe&roomNumber=604" class="btn btn-primary">Reservar Deluxe 604</a>
+            </div>
+            <div class="col-md-6">
+                <img src="{% static 'imagenes/deluxe_604.jpg' %}" alt="Habitación Deluxe 604" class="img-fluid">
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p>&copy; 2024 Pacific Reef. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'scripts/app.js' %}"></script> <!-- Enlace a tu archivo JS -->
+</body>
+</html>
