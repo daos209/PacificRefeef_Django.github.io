@@ -10,7 +10,20 @@ from django.contrib.auth import authenticate, login
 # Verifica si el usuario es administrador
 def admin_check(user):
     return user.is_superuser
-
+def user_login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            next_url = request.GET.get('next', 'home')  # Obtener la URL de redirección
+            return redirect(next_url)  # Redirigir a la URL original o a la página de inicio
+        else:
+            # Mostrar un mensaje de error si la autenticación falla
+            return render(request, 'reservaciones/login.html', {'error': 'Nombre de usuario o contraseña incorrectos'})
+    else:
+        return render(request, 'reservaciones/login.html', {'next': request.GET.get('next', '')})
 # Vista de registro de usuario
 def registro(request):
     if request.method == 'POST':

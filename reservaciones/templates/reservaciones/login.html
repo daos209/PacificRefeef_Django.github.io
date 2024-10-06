@@ -26,6 +26,7 @@
             <h2 class="text-center mb-4">Iniciar Sesión</h2>
             <form method="post" action="{% url 'login' %}">
                 {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}">  <!-- Campo oculto para la URL de redirección -->
                 <div class="mb-3">
                     <label for="username" class="form-label">Nombre de Usuario</label>
                     <input type="text" class="form-control" id="username" name="username" required>
