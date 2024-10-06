@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
             updateFloors(roomType);
             // Resetear selección de habitación cuando se cambia el tipo de habitación
             roomSelect.innerHTML = '<option value="">Seleccione una Habitación</option>';
-        }
+        });
     });
     
     floorSelect.addEventListener('change', function() {
@@ -82,4 +82,5 @@ document.addEventListener('DOMContentLoaded', function() {
         if (floor && roomType) {
             updateRooms(floor, roomType);
         }
-    });
+    }
+});
