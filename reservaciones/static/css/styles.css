@@ -9,7 +9,7 @@ body {
 
 .logo {
     width: 150px;  /* Cambia el tamaño según lo necesites */
-    height: 0.5 px;  /* Mantiene la proporción de la imagen */
+    height: auto;  /* Mantiene la proporción de la imagen */
 }
 
 h1, h2 {
