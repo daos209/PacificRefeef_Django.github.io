@@ -2,6 +2,9 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required, user_passes_test
 from .models import Reservation
 from .forms import ReservationForm
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
 # Verifica si el usuario es administrador
 def admin_check(user):
   return user.is_superuser

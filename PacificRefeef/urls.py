@@ -16,13 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.shortcuts import render
+from django.contrib.auth import views as auth_views
+from reservaciones import views as reservaciones_views
 
 def index(request):
     return render(request, 'index.html')
 
 urlpatterns = [
-    path('admin/', admin.site.urls),  # Ruta para el panel de administración
-    path('reservaciones/', include('reservaciones.urls')),  # Incluye las URLs de la aplicación 'reservaciones'
-    # Agrega otras rutas según sea necesario
+    path('admin/', admin.site.urls),
+    path('login/', auth_views.LoginView.as_view(template_name='reservaciones/login.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('registro/', reservaciones_views.registro, name='registro'),
+    path('', include('reservaciones.urls')),  # Incluye las URLs de la aplicación 'reservaciones'
 ]
