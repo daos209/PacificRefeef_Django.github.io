@@ -1,5 +1,5 @@
 # reservaciones/views.py
-from django.shortcuts import get_object_or_404, redirect, render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required, user_passes_test
 from .models import Reservation
 from .forms import ReservationForm
@@ -24,6 +24,11 @@ def registro(request):
     else:
         form = UserCreationForm()
     return render(request, 'reservaciones/registro.html', {'form': form})
+
+# Vista para la preselección de tipo de habitación
+@login_required
+def select_room_type(request):
+    return render(request, 'reservaciones/tipos_habitaciones.html')
 
 # Crear reserva (con manejo de errores)
 @login_required
@@ -72,3 +77,14 @@ def admin_dashboard(request):
     reservations = Reservation.objects.all()  # Recupera todas las reservas
     # Puedes filtrar o paginar las reservas aquí como mejora
     return render(request, 'reservaciones/admin_dashboard.html', {'reservations': reservations})
+
+# Eliminar reserva
+@user_passes_test(admin_check)
+def delete_reservation(request, reservation_id):
+    reservation = get_object_or_404(Reservation, id=reservation_id)
+    reservation.delete()
+    return redirect('admin_dashboard')
+
+# Vista para la página de inicio
+def home(request):
+    return render(request, 'reservaciones/home.html')
